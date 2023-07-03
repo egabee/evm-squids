@@ -22,6 +22,9 @@ dependencies:
   ethers:
     specifier: ^6.5.1
     version: 6.5.1
+  kafkajs:
+    specifier: ^2.2.4
+    version: 2.2.4
   pg:
     specifier: ^8.11.0
     version: 8.11.0
@@ -1599,6 +1602,11 @@ packages:
 
   /json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
+    dev: false
+
+  /kafkajs@2.2.4:
+    resolution: {integrity: sha512-j/YeapB1vfPT2iOIUn/vxdyKEuhuY2PxMBvf5JWux6iSaukAccrMtXEY/Lb7OvavDhOWME589bpLrEdnVHjfjA==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /keyv@4.5.2:

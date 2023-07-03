@@ -3,7 +3,8 @@ import { BlockData } from '@subsquid/evm-processor'
 
 import { processor } from './processor'
 import { ChainHourlySnapshot } from './model'
-import { BIGINT_ZERO, CHAIN_ID, MILLISECONDS_PER_HOUR } from './common'
+import { BIGINT_ZERO, CHAIN_ID, HOURLY_CHAIN_SNAPSHOT_TOPIC, MILLISECONDS_PER_HOUR } from './common'
+import { producer, sendMessages } from './common/kafka-client'
 
 processor.run(new TypeormDatabase({ supportHotBlocks: true }), async ({ blocks, store }) => {
   for (let c of blocks) {
@@ -18,6 +19,8 @@ processor.run(new TypeormDatabase({ supportHotBlocks: true }), async ({ blocks, 
     snapshot.timestamp = BigInt(c.header.timestamp)
 
     await store.upsert(snapshot)
+
+    await sendMessages([snapshot], HOURLY_CHAIN_SNAPSHOT_TOPIC)
   }
 })
 
