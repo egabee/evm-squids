@@ -15,11 +15,11 @@ export const processor = new EvmBatchProcessor()
     // against the other EVM networks
     // For a full list of supported networks and config options
     // see https://docs.subsquid.io/evm-indexing/
-    archive: 'http://164.92.230.26:8080/',
+    archive: lookupArchive('moonbeam', { type: 'EVM' }),
 
     // Must be set for RPC ingestion (https://docs.subsquid.io/evm-indexing/evm-processor/)
     // OR to enable contract state queries (https://docs.subsquid.io/evm-indexing/query-state/)
-    chain: 'https://rpc.testnet.fantom.network/',
+    chain: 'https://rpc.ankr.com/moonbeam/',
   })
   .setFinalityConfirmation(10)
   .setFields({
@@ -35,7 +35,7 @@ export const processor = new EvmBatchProcessor()
     },
   })
   .setBlockRange({
-    from: 2_593_959,
+    from: 3_920_297,
   })
   .addTransaction({})
 
